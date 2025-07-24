@@ -3,7 +3,7 @@ import LocationSimulator from './components/LocationSimulator';
 import ValetDashboard from './components/ValetDashboard';
 import MallMap from './components/MallMap';
 import DeliveryETA from './components/DeliveryETA';
-// ...
+import './App.css'
 
 
 const App = () => {
