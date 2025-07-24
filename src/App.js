@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import LocationSimulator from './components/LocationSimulator';
+import ValetDashboard from './components/ValetDashboard';
+import MallMap from './components/MallMap';
+import DeliveryETA from './components/DeliveryETA';
+// ...
 
-function App() {
+
+const App = () => {
+  const [predictedGate, setPredictedGate] = useState(null);
+  const [userPosition, setUserPosition] = useState({ x: 50, y: 50 });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: '2rem', fontFamily: 'Arial' }}>
+      <h1>🅿️ Intelligent Valet System</h1>
+      <LocationSimulator
+        onGatePredicted={setPredictedGate}
+        onPositionChange={setUserPosition}
+      />
+      <MallMap userPosition={userPosition} />
+      <ValetDashboard gate={predictedGate} />
+      <DeliveryETA />
     </div>
   );
-}
+};
 
 export default App;
